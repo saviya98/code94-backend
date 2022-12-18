@@ -25,4 +25,11 @@ try {
 }
 app.get("/", (req, res) => res.send("Server is Running..."));
 
+//setting routes
+const userRouter = require("./Routes/UserRoute");
+app.use("/users", userRouter);
+
+const productRouter = require("./Routes/ProductRoute");
+app.use("/products", productRouter);
+
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
