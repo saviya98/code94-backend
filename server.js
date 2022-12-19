@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 require("dotenv").config();
@@ -31,5 +32,10 @@ app.use("/users", userRouter);
 
 const productRouter = require("./Routes/ProductRoute");
 app.use("/products", productRouter);
+
+app.use("/Uploads", express.static(path.join(__dirname, "Uploads")));
+
+const favouriteRouter = require("./Routes/FavouritesRoute");
+app.use("/favourite", favouriteRouter);
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
